@@ -1,0 +1,73 @@
+  <div class="row">
+    <div class="col-xs-4">
+
+      <form (ngSubmit)="onAddSkill(f)" #f="ngForm">
+
+        <div class="form-group">
+          <label for="sname">Skill name</label>
+          <input 
+            type="text"
+            id="sname"
+            name="sname"
+            class="form-control"
+            required
+            ngModel>
+        </div>
+
+        <div class="form-group">
+          <label for="stype">Skill type : </label>
+          <select name="stype" id="stype" class="form-control" ngModel>
+            <option value="Functional">Functional</option>
+            <option value="Technical">Technical</option>
+            <option value="Infrastructure">Infrastructure</option>
+            <option value="Process">Process</option>
+            <option value="Guidelines">Guidelines</option>
+          </select>
+        </div>
+
+        <button 
+          class="btn btn-success"
+          type="submit">Add Skill</button>
+      </form>
+      
+    </div>
+
+    <div class="col-xs-4">
+
+        <div class="group">
+            <div class="title">Functional</div> 
+             <ul   *ngFor="let skill of skills">
+               <li  *ngIf="skill.skillType=='Functional'">{{ skill.name }}</li>
+             </ul> 
+         </div>
+         <div class="group">
+            <div class="title">Technical</div> 
+             <ul   *ngFor="let skill of skills">
+               <li  *ngIf="skill.skillType=='Technical'">{{ skill.name }}</li>
+             </ul> 
+         </div>
+         <div class="group">
+            <div class="title">Infrastructure</div> 
+             <ul  *ngFor="let skill of skills">
+               <li *ngIf="skill.skillType=='Infrastructure'">{{ skill.name }}</li>
+             </ul> 
+         </div>
+
+      </div>
+
+
+      <div class="col-xs-4">   
+         <div class="group">
+            <div class="title">Process</div> 
+             <ul   *ngFor="let skill of skills">
+               <li  *ngIf="skill.skillType=='Process'">{{ skill.name }}</li>
+             </ul> 
+         </div>
+         <div class="group">
+            <div class="title">Guidelines</div> 
+             <ul  *ngFor="let skill of skills">
+               <li  *ngIf="skill.skillType=='Guidelines'">{{ skill.name }}</li>
+             </ul> 
+         </div>
+        </div>
+</div>

@@ -1,0 +1,40 @@
+ <div class="row text" *ngIf="checkVal">
+   <div class="col-xs-12">
+      All the employees are not validated. Please validate all employees !!!
+    </div>
+ </div>
+ 
+ <div class="row" *ngIf="!checkVal">
+    <div class="col-xs-12">
+        <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th>Skill Type</th>
+                <th>Name</th>
+                <th *ngFor="let employee of employees">{{ employee.name }}</th>
+                <th>Average Rating</th>
+              </tr>
+            </thead>
+            <tbody  *ngFor="let stype of stypes">
+                <tr>
+                    <th>{{ stype }}</th>
+                    <th></th>
+                    <th *ngFor="let employee of employees"></th>
+                    <th></th>
+                </tr>
+                <ng-container *ngFor="let skill of skills;let i= index">
+                  <tr style="border-top: 1px solid #cccccc" *ngIf="skill.skillType === stype" >
+                          <td></td>
+                          <td >{{ skill.name}}</td>
+                          <td *ngFor="let employee of employees">
+                            <div>{{ employee.skills[i].rating }}</div>  
+                          </td>
+                          <td>{{skill.rating}}%</td>
+                  </tr>
+                </ng-container>
+                
+            </tbody>
+            
+          </table>
+    </div>
+  </div>

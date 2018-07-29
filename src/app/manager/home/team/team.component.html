@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-xs-3">
+      <ul class="list-group clearfix list">
+        <li><a  routerLink="add-employee"
+                style="cursor : pointer" 
+                class="center-block list-group-item list-group-item-success"> 
+              <span class="glyphicon glyphicon-plus"></span>&nbsp; Add New Employee
+          </a>
+        </li>
+        <div
+          *ngFor="let employee of employees">
+          <a 
+            [routerLink]="employee.id"  
+            routerLinkActive = "active"
+            style="cursor : pointer"
+            class="list-group-item"> 
+            <h4 class="list-group-item-heading">{{ employee.name }}</h4>
+            <p class="list-group-item-text">{{ employee.id }}</p>
+          </a>
+      </div>
+      </ul>
+    </div>
+    
+    <div class="col-xs-8">
+        <router-outlet></router-outlet>  
+    </div>
+
+  </div>

@@ -1,0 +1,57 @@
+<app-head [user]="employee"></app-head>
+<div class="container">
+    <div class="row">
+        <div class="text col-xs-12" *ngIf="disableInput == 0">
+            Skill values Invalidated. Please update ratings!!!<br>
+        </div>
+        <div class="text col-xs-12" *ngIf="disableInput == 2">
+            Skill values Validated.<br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+         <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <table class="table table-hover">
+            <thead>
+                <th>Skill Type</th>
+                <th>Name</th>
+                <th>Rating</th>
+            </thead>
+            <tbody  *ngFor="let stype of stypes">
+                <tr>
+                    <th>{{ stype }}</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr style="border-top: 1px solid #cccccc" *ngFor="let skill of skills;let i= index">
+                        <td *ngIf="skill.skillType === stype"></td>
+                        <td *ngIf="skill.skillType === stype">{{ skill.name}}</td>
+                        <td *ngIf="skill.skillType === stype">
+                            <input
+                                 type="range"
+                                 min="0" max="5"
+                                 [id]="'rating'+ i"
+                                 [name]="'rating'+i"
+                                 [disabled]="disableInput == 2"
+                                 [(ngModel)] = "skills[i].rating">
+                        </td>
+                        <td *ngIf="skill.skillType === stype">{{ skills[i].rating }}</td>
+                </tr>
+                <br>
+            </tbody>
+            
+          </table> 
+          
+              <button 
+                class="btn btn-success" 
+                type="submit"
+                [disabled]="disableInput == 2">Submit</button>
+        
+        </form>
+
+        <div *ngIf="change">
+            Changes Saved
+        </div>
+        </div>
+    </div>
+</div>

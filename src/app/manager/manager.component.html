@@ -1,0 +1,24 @@
+<app-head [user]="manager"></app-head>
+
+  <div class="row">
+    <div class="col-xs-3">
+
+      <ul class="list-group clearfix list">
+        <li><a  routerLink="add-team"
+                style="cursor : pointer" 
+                class="center-block list-group-item list-group-item-success"> 
+              <span class="glyphicon glyphicon-plus"></span>&nbsp; Add New Team
+          </a>
+        </li>
+        <app-teamlist-item 
+          *ngFor="let team of teams"
+          [team]="team">
+        </app-teamlist-item>
+      </ul>
+    </div>
+    
+    <div class="col-xs-9">
+        <router-outlet></router-outlet>  
+    </div>
+
+  </div>

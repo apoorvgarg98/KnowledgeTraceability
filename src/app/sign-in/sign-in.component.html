@@ -1,0 +1,93 @@
+<div class="container" style="background: radial-gradient(silver, #666666,	#222222)">
+  <div class="row">
+    <div class="col-xs-12 center-block">
+        <h1>KnowledgeTraceability</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="center-block form1">
+          <div class="text">Manager</div>
+          <br><br>
+      <form (ngSubmit)="onManagerSignIn(manager)" #manager="ngForm">
+          <div class="form-group">
+            <input 
+              type="text"
+              id="username"
+              name="username"
+              class="form-control"
+              ngModel
+              required
+              placeholder="UserName">
+          </div>
+
+          <div class="form-group">
+              <input 
+                type="password"
+                class="form-control"
+                name="pass"
+                id="pass"
+                ngModel
+                required
+                placeholder="Password">
+            
+          </div>
+          
+          <div *ngIf="errorMess" class="error">
+            Invalid username or password
+            <br>
+          </div>
+
+          <button 
+            class="btn btn-success btn-block" 
+            type="submit"
+            (click)="onManagerSignIn()">Sign In</button>
+      </form>
+      </div>
+    </div>
+
+    <div class="col-xs-6 right-div">
+      <div class="center-block form1">
+      <form (ngSubmit)="onEmployeeSignIn(employee)" #employee="ngForm">
+        <div class="text">Employee</div>
+        <br><br>
+        <div class="form-group">
+          <input 
+            type="text"
+            id="teamId"
+            name="teamId"
+            class="form-control"
+            ngModel
+            required
+            placeholder="Team ID">
+        </div>
+
+        <div class="form-group">
+          <input 
+            type="text"
+            id="employeeId"
+            name="employeeId"
+            class="form-control"
+            ngModel
+            required
+            placeholder="Employee ID">
+        </div>
+
+        
+        <div *ngIf="errorMessEmp" class="error">
+          Invalid Team ID or Employee ID
+          <br>
+        </div>
+
+        <button 
+          class="btn btn-success btn-block" 
+          type="submit"
+          (click)="onEmployeeSignIn()">Sign In</button>
+      </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>
